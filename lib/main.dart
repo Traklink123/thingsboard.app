@@ -17,6 +17,7 @@ import 'package:thingsboard_app/firebase_options.dart';
 import 'package:thingsboard_app/locator.dart';
 import 'package:thingsboard_app/utils/services/firebase/i_firebase_service.dart';
 import 'package:thingsboard_app/utils/services/layouts/i_layout_service.dart';
+import 'package:thingsboard_app/utils/services/notification_service.dart';
 import 'package:universal_platform/universal_platform.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -25,10 +26,10 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(RegionAdapter());
 
-WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
   await Firebase.initializeApp(); // Initialize Firebase
 
- // runApp(const ThingsboardApp());
+  // runApp(const ThingsboardApp());
 
   await setUpRootDependencies();
   if (UniversalPlatform.isAndroid) {
@@ -48,6 +49,9 @@ WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
   }
 
   runApp(const ThingsboardApp());
+  Future.delayed(Duration.zero, () async {
+    await NotificationsServices().initNotifications();
+  });
 }
 
 class ThingsboardApp extends StatelessWidget {

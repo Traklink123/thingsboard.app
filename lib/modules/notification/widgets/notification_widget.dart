@@ -33,11 +33,13 @@ class NotificationWidget extends StatelessWidget {
 
     return InkWell(
       onTap: () {
+        /*
         NotificationService.handleClickOnNotification(
           notification.additionalConfig?['onClick'] ?? {},
           tbContext,
           isOnNotificationsScreenAlready: true,
         );
+        */
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),

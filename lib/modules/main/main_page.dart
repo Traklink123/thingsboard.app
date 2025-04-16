@@ -96,7 +96,7 @@ class _MainPageState extends TbPageState<MainPage>
     WidgetsBinding.instance.addObserver(this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       orientation = MediaQuery.of(context).orientation;
-      NotificationService(tbClient, log, tbContext).updateNotificationsCount();
+      //NotificationService(tbClient, log, tbContext).updateNotificationsCount();
     });
 
     super.initState();
@@ -105,7 +105,7 @@ class _MainPageState extends TbPageState<MainPage>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      NotificationService(tbClient, log, tbContext).updateNotificationsCount();
+      //NotificationService(tbClient, log, tbContext).updateNotificationsCount();
     }
   }
 
