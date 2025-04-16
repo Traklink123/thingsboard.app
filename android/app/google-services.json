@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "549794492478",
+    "project_id": "traklink-board-85ec2",
+    "storage_bucket": "traklink-board-85ec2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549794492478:android:df723f533b344e40a2e16f",
+        "android_client_info": {
+          "package_name": "my.thingsboard.android.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATwwYSdsg2k33-NUMSr8VWyjE0czsj6Wk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
