@@ -109,7 +109,8 @@
         <!-- A custom Android Notification Channel to deliver FCM notifications on a non-default channel -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
-            android:value="general" />
+            android:value="high_importance_channel" />
+
 
         <provider
                 android:name="androidx.core.content.FileProvider"

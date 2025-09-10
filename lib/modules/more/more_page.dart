@@ -11,7 +11,6 @@ import 'package:thingsboard_app/modules/more/more_menu_item_widget.dart';
 import 'package:thingsboard_app/thingsboard_client.dart';
 import 'package:thingsboard_app/utils/services/endpoint/i_endpoint_service.dart';
 import 'package:thingsboard_app/utils/services/layouts/i_layout_service.dart';
-import 'package:thingsboard_app/utils/services/notification_service.dart';
 import 'package:thingsboard_app/utils/ui/tb_text_styles.dart';
 import 'package:thingsboard_app/utils/ui/ui_utils.dart';
 

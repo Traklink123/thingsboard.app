@@ -2,6 +2,9 @@
 import 'dart:convert';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:http/http.dart' as http;
+
+
 
 Future<void> handleBackgroundNotifications(RemoteMessage message) async {
   print(
@@ -94,4 +97,37 @@ class NotificationsServices {
     await initPushNotifications();
     await initLocalNotifications();
   }
+}
+
+Future<void> sendFcmTokenToThingsBoard({
+  required String fcmToken,
+  required String deviceAccessToken,
+}) async {
+  final url = Uri.parse('http://77.245.2.171:8080/api/v1/$deviceAccessToken/attributes');
+
+  final response = await http.post(
+    url,
+    headers: {'Content-Type': 'application/json'},
+    body: '{"fcmToken": "$fcmToken"}',
+  );
+
+  if (response.statusCode == 200) {
+    print("Token sent to ThingsBoard successfully.");
+  } else {
+    print("Failed to send token: ${response.body}");
+  }
+}
+
+Future<void> initFCMAndSendToTB(String deviceAccessToken) async {
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  String? token = await messaging.getToken();
+
+  if (token != null) {
+    await sendFcmTokenToThingsBoard(fcmToken: token, deviceAccessToken: 'XBGUh2xrQFSL3xOR6qOG');
+  }
+
+  // Handle token refresh
+  FirebaseMessaging.instance.onTokenRefresh.listen((newToken) {
+    sendFcmTokenToThingsBoard(fcmToken: newToken, deviceAccessToken: 'XBGUh2xrQFSL3xOR6qOG');
+  });
 }
